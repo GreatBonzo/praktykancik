@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
 
-    public static int[][] MacierzKabla(String[] literki, String[] cyferki){
+    public static ArrayList<Integer[]> MacierzKabla(String[] literki, String[] cyferki){
 
-        int[] skrzynkaX = new int[100000];
-        int[] skrzynkaY = new int[100000];
+        ArrayList<Integer[]> skrzynka = new ArrayList<>(1000000);
         int pozycjaX = 0;
         int pozycjaY = 0;
 
@@ -22,11 +22,10 @@ public class Main {
 
             switch (literki[i]){
                 case "R":
-                    System.out.println("Iteracja: "+i);
                     int prawoSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<prawoSkret; r++){
-                        skrzynkaX[j] = pozycjaX;
-                        skrzynkaY[j] = pozycjaY;
+                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        skrzynka.add(j, doWpisania);
                         pozycjaX += 1;
                         j++;
                     }
@@ -34,11 +33,10 @@ public class Main {
                     break;
 
                 case "L":
-                    System.out.println("Iteracja: "+i);
                     int lewoSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<lewoSkret; r++){
-                        skrzynkaX[j] = pozycjaX;
-                        skrzynkaY[j] = pozycjaY;
+                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        skrzynka.add(j, doWpisania);
                         pozycjaX -= 1;
                         j++;
                     }
@@ -46,12 +44,10 @@ public class Main {
                     break;
 
                 case "D":
-                    System.out.println("Iteracja: "+i);
                     int doloSkret = Integer.parseInt(cyferki[i]);
-
                     for (int r=0; r<doloSkret; r++){
-                        skrzynkaX[j] = pozycjaX;
-                        skrzynkaY[j] = pozycjaY;
+                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        skrzynka.add(j, doWpisania);
                         pozycjaY += 1;
                         j++;
                     }
@@ -59,12 +55,10 @@ public class Main {
                     break;
 
                 case "U":
-                    System.out.println("Iteracja: "+i);
                     int goroSkret = Integer.parseInt(cyferki[i]);
-
                     for (int r=0; r<goroSkret; r++){
-                        skrzynkaX[j] = pozycjaX;
-                        skrzynkaY[j] = pozycjaY;
+                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        skrzynka.add(j, doWpisania);
                         pozycjaY -= 1;
                         j++;
                     }
@@ -75,10 +69,8 @@ public class Main {
 
         }
 
-        int[][] calaSkrzynka = new int[skrzynkaX.length][skrzynkaY.length];
 
-
-        return calaSkrzynka;
+        return skrzynka;
     }
 
     public static void main(String[] args) throws IOException {
@@ -116,19 +108,20 @@ public class Main {
             }
         }
 
-//        String [] penisLiterki = new String[]{"R","U","L","U","L","D","L","D","R"};
-//        String [] penisCyferki = new String[]{"10","10","10","30","10","30","10","10","10"};
-//
-//        String [] wPrawoO5L = new String[]{"R"};
-//        String [] wPrawoO5C = new String[]{"5"};
-//
-//        int[] wynik = MacierzKabla(wPrawoO5L, wPrawoO5C);
-//
-//
-//
-//        for (int i=0; i<wynik.length; i++){
-//            System.out.println(Arrays.toString(wynik[0])+Arrays.toString(wynik[1]));
-//        }
+        String [] penisLiterki = new String[]{"R","U","L","U","L","D","L","D","R"};
+        String [] penisCyferki = new String[]{"10","10","10","30","10","30","10","10","10"};
+
+        String [] wPrawoO5L = new String[]{"R"};
+        String [] wPrawoO5C = new String[]{"5"};
+
+        ArrayList<Integer[]> wynikKabel1 = MacierzKabla(kabel1Literki, kabel1Cyferki);
+        ArrayList<Integer[]> wynikKabel2 = MacierzKabla(kabel2Literki, kabel2Cyferki);
+
+
+
+//       for (Integer[] iterator : wynik){
+//           System.out.println(Arrays.toString(iterator));
+//       }
 
 
     }
