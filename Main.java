@@ -15,15 +15,21 @@ public class Main {
                                               ArrayList<PasujeDoArreja> kabel2){
 
         int liczbaKrokow;
+        int i = 0;
+
         ArrayList<Integer> odleglosciDoSkrzyzowan = new ArrayList<>(czescWspolna.size());
 
-        for (int i=0; i<czescWspolna.size(); i++){
-            PasujeDoArreja element = czescWspolna.get(i);
+        for (PasujeDoArreja element : czescWspolna){
 
-            int indeksK1 = kabel1.indexOf(element);
-            int indeksK2 = kabel2.indexOf(element);
+            int indeksK1;
+            int indeksK2;
+            indeksK1 = kabel1.indexOf(element);
+            indeksK2 = kabel2.indexOf(element);
 
-            odleglosciDoSkrzyzowan.add(i, indeksK1 + indeksK2);
+            if ((indeksK1 != 0) & (indeksK2!=0)) {
+                odleglosciDoSkrzyzowan.add(i, indeksK1 + indeksK2);
+                i++;
+            }
         }
 
         liczbaKrokow = Collections.min(odleglosciDoSkrzyzowan);
