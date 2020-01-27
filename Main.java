@@ -11,6 +11,18 @@ import java.util.Scanner;
 
 public class Main {
 
+//    public static int LiczbaKrokow(ArrayList<Integer[]> czescWspolna, ArrayList<Integer[]> kabel1, ArrayList<Integer[]> kabel2){
+//
+//        int liczbaKrokow;
+//
+//
+//
+//
+//
+//
+//
+//        return liczbaKrokow;
+//    }
 
     public static ArrayList<Integer[]> MacierzKabla(String[] literki, String[] cyferki){
 
@@ -122,10 +134,12 @@ public class Main {
 //        wynikKabel1.retainAll(wynikKabel2);
 
         ArrayList<Integer[]> czescWspolna = new ArrayList<>();
+        Integer[] zero = {0,0};
 
         for (Integer[] elementA : wynikKabel1) {
             for (Integer[] elementB : wynikKabel2)
             if (Arrays.equals(elementA, elementB)){
+                if (!(Arrays.equals(elementA, zero)))
                 czescWspolna.add(elementA);
             }
         }
@@ -133,14 +147,15 @@ public class Main {
         ArrayList<Integer> sumy = new ArrayList<>(czescWspolna.size());
         for (Integer[] element : czescWspolna){
             int suma = Math.abs(element[0]) + Math.abs(element[1]);
-            if (suma != 0) {
                 sumy.add(suma);
-            }
+
         }
 
 
         int min = Collections.min(sumy);
-        System.out.println(min);
+        System.out.println("Najblizsze skrzyzowanie " + min);
+
+
 
 //       for (Integer[] iterator : czescWspolna){
 //           System.out.println(Arrays.toString(iterator));
