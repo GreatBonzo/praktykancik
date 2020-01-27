@@ -109,19 +109,27 @@ public class Main {
             }
         }
 
-        String [] penisLiterki = new String[]{"R","U","L","U","L","D","L","D","R"};
-        String [] penisCyferki = new String[]{"10","10","10","30","10","30","10","10","10"};
-
-        String [] wPrawoO5L = new String[]{"R"};
-        String [] wPrawoO5C = new String[]{"5"};
+//        String [] penisLiterki = new String[]{"R","U","L","U","L","D","L","D","R"};
+//        String [] penisCyferki = new String[]{"10","10","10","30","10","30","10","10","10"};
+//
+//        String [] wPrawoO5L = new String[]{"R"};
+//        String [] wPrawoO5C = new String[]{"5"};
 
         ArrayList<Integer[]> wynikKabel1 = MacierzKabla(kabel1Literki, kabel1Cyferki);
         ArrayList<Integer[]> wynikKabel2 = MacierzKabla(kabel2Literki, kabel2Cyferki);
 
-        wynikKabel1.retainAll(wynikKabel2);
+//        wynikKabel1.retainAll(wynikKabel2);
 
+        ArrayList<Integer[]> czescWspolna = new ArrayList<>();
 
-       for (Integer[] iterator : wynikKabel1){
+        for (Integer[] elementA : wynikKabel1) {
+            for (Integer[] elementB : wynikKabel2)
+            if (Arrays.equals(elementA, elementB)){
+                czescWspolna.add(elementA);
+            }
+        }
+
+       for (Integer[] iterator : czescWspolna){
            System.out.println(Arrays.toString(iterator));
        }
 
