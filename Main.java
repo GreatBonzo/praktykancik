@@ -5,19 +5,20 @@ import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
 
-    public static int NajmniejszaLiczbaKrokow(ArrayList<Integer[]> czescWspolna, ArrayList<Integer[]> kabel1, ArrayList<Integer[]> kabel2){
+    public static int NajmniejszaLiczbaKrokow(ArrayList<PasujeDoArreja> czescWspolna,
+                                              ArrayList<PasujeDoArreja> kabel1,
+                                              ArrayList<PasujeDoArreja> kabel2){
 
         int liczbaKrokow;
         ArrayList<Integer> odleglosciDoSkrzyzowan = new ArrayList<>(czescWspolna.size());
 
         for (int i=0; i<czescWspolna.size(); i++){
-            Integer[] element = czescWspolna.get(i);
+            PasujeDoArreja element = czescWspolna.get(i);
 
             int indeksK1 = kabel1.indexOf(element);
             int indeksK2 = kabel2.indexOf(element);
@@ -31,9 +32,9 @@ public class Main {
         return liczbaKrokow;
     }
 
-    public static ArrayList<Integer[]> MacierzKabla(String[] literki, String[] cyferki){
+    public static ArrayList<PasujeDoArreja> MacierzKabla(String[] literki, String[] cyferki){
 
-        ArrayList<Integer[]> skrzynka = new ArrayList<>();
+        ArrayList<PasujeDoArreja> skrzynka = new ArrayList<>();
         int pozycjaX = 0;
         int pozycjaY = 0;
 
@@ -45,7 +46,9 @@ public class Main {
                 case "R":
                     int prawoSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<prawoSkret; r++){
-                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        PasujeDoArreja doWpisania = new PasujeDoArreja();
+                        doWpisania.setWartoscX(pozycjaX);
+                        doWpisania.setWartoscY(pozycjaY);
                         skrzynka.add(j, doWpisania);
                         pozycjaX += 1;
                         j++;
@@ -56,7 +59,9 @@ public class Main {
                 case "L":
                     int lewoSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<lewoSkret; r++){
-                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        PasujeDoArreja doWpisania = new PasujeDoArreja();
+                        doWpisania.setWartoscX(pozycjaX);
+                        doWpisania.setWartoscY(pozycjaY);
                         skrzynka.add(j, doWpisania);
                         pozycjaX -= 1;
                         j++;
@@ -67,7 +72,9 @@ public class Main {
                 case "D":
                     int doloSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<doloSkret; r++){
-                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        PasujeDoArreja doWpisania = new PasujeDoArreja();
+                        doWpisania.setWartoscX(pozycjaX);
+                        doWpisania.setWartoscY(pozycjaY);
                         skrzynka.add(j, doWpisania);
                         pozycjaY += 1;
                         j++;
@@ -78,19 +85,17 @@ public class Main {
                 case "U":
                     int goroSkret = Integer.parseInt(cyferki[i]);
                     for (int r=0; r<goroSkret; r++){
-                        Integer[] doWpisania = {pozycjaX, pozycjaY};
+                        PasujeDoArreja doWpisania = new PasujeDoArreja();
+                        doWpisania.setWartoscX(pozycjaX);
+                        doWpisania.setWartoscY(pozycjaY);
                         skrzynka.add(j, doWpisania);
                         pozycjaY -= 1;
                         j++;
                     }
                     i++;
                     break;
-
             }
-
         }
-
-
         return skrzynka;
     }
 
@@ -129,33 +134,19 @@ public class Main {
             }
         }
 
-//        String [] penisLiterki = new String[]{"R","U","L","U","L","D","L","D","R"};
-//        String [] penisCyferki = new String[]{"10","10","10","30","10","30","10","10","10"};
-//
-//        String [] wPrawoO5L = new String[]{"R"};
-//        String [] wPrawoO5C = new String[]{"5"};
+        ArrayList<PasujeDoArreja> wynikKabel1 = MacierzKabla(kabel1Literki, kabel1Cyferki);
+        ArrayList<PasujeDoArreja> wynikKabel2 = MacierzKabla(kabel2Literki, kabel2Cyferki);
+        ArrayList<PasujeDoArreja> czescWspolna = new ArrayList<>(wynikKabel1);
 
-        ArrayList<Integer[]> wynikKabel1 = MacierzKabla(kabel1Literki, kabel1Cyferki);
-        ArrayList<Integer[]> wynikKabel2 = MacierzKabla(kabel2Literki, kabel2Cyferki);
 
-//        wynikKabel1.retainAll(wynikKabel2);
+        czescWspolna.retainAll(wynikKabel2);
 
-        ArrayList<Integer[]> czescWspolna = new ArrayList<>();
-        Integer[] zero = {0,0};
-
-        for (Integer[] elementA : wynikKabel1) {
-            for (Integer[] elementB : wynikKabel2)
-            if (Arrays.equals(elementA, elementB)){
-                if (!(Arrays.equals(elementA, zero)))
-                czescWspolna.add(elementA);
-            }
-        }
 
         ArrayList<Integer> sumy = new ArrayList<>(czescWspolna.size());
-        for (Integer[] element : czescWspolna){
-            int suma = Math.abs(element[0]) + Math.abs(element[1]);
+        for (PasujeDoArreja element : czescWspolna){
+            int suma = Math.abs(element.getWartoscX()) + Math.abs(element.getWartoscY());
+            if (suma != 0)
                 sumy.add(suma);
-
         }
 
 
@@ -164,12 +155,6 @@ public class Main {
 
         System.out.println("Najmniejsza liczba krokow do skrzyzowania " +
                 NajmniejszaLiczbaKrokow(czescWspolna, wynikKabel1, wynikKabel2));
-
-
-
-//       for (Integer[] iterator : czescWspolna){
-//           System.out.println(Arrays.toString(iterator));
-//       }
 
 
     }
