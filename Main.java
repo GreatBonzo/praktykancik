@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -117,11 +118,12 @@ public class Main {
         ArrayList<Integer[]> wynikKabel1 = MacierzKabla(kabel1Literki, kabel1Cyferki);
         ArrayList<Integer[]> wynikKabel2 = MacierzKabla(kabel2Literki, kabel2Cyferki);
 
+        wynikKabel1.retainAll(wynikKabel2);
 
 
-//       for (Integer[] iterator : wynik){
-//           System.out.println(Arrays.toString(iterator));
-//       }
+       for (Integer[] iterator : wynikKabel1){
+           System.out.println(Arrays.toString(iterator));
+       }
 
 
     }
