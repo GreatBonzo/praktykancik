@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -129,9 +130,21 @@ public class Main {
             }
         }
 
-       for (Integer[] iterator : czescWspolna){
-           System.out.println(Arrays.toString(iterator));
-       }
+        ArrayList<Integer> sumy = new ArrayList<>(czescWspolna.size());
+        for (Integer[] element : czescWspolna){
+            int suma = Math.abs(element[0]) + Math.abs(element[1]);
+            if (suma != 0) {
+                sumy.add(suma);
+            }
+        }
+
+
+        int min = Collections.min(sumy);
+        System.out.println(min);
+
+//       for (Integer[] iterator : czescWspolna){
+//           System.out.println(Arrays.toString(iterator));
+//       }
 
 
     }
