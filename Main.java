@@ -14,7 +14,7 @@ public class Main {
 
     public static ArrayList<Integer[]> MacierzKabla(String[] literki, String[] cyferki){
 
-        ArrayList<Integer[]> skrzynka = new ArrayList<>(1000000);
+        ArrayList<Integer[]> skrzynka = new ArrayList<>();
         int pozycjaX = 0;
         int pozycjaY = 0;
 
