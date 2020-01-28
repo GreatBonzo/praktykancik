@@ -5,7 +5,8 @@ package com.AdventOfCode4;
 //        It is a six-digit number.
 //        The value is within the range given in your puzzle input.
 //        Two adjacent digits are the same (like 22 in 122345).
-//        Going from left to right, the digits never decrease; they only ever increase or stay the same (like 111123 or 135679).
+//        Going from left to right, the digits never decrease; they only ever increase or stay the same
+//        (like 111123 or 135679).
 //        Other than the range rule, the following are true:
 //
 //        111111 meets these criteria (double 11, never decreases).
@@ -18,6 +19,19 @@ package com.AdventOfCode4;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code herekkk
+
+        int dol = 124075;
+        int gora = 580769;
+
+
+        PasswordFinder test = new PasswordFinder(dol, gora);
+
+       int wynik = test.main();
+        System.out.println(wynik);
+
+
+//        Playpen d = new Playpen();
+//
+//        System.out.println(d.dupa());
     }
 }
