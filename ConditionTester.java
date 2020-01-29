@@ -30,9 +30,6 @@ public class ConditionTester {
                         Integer.parseInt(temp.toString()) >= dolZakresu
                 );
 
-
-
-
         return wynik;
     }
 }

@@ -1,9 +1,6 @@
 package com.AdventOfCode4;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PasswordFinder {
@@ -22,7 +19,7 @@ public class PasswordFinder {
     public int main () {
         int start=0;
         int finish=9;
-        ConditionTester ct = new ConditionTester();
+        NoClusteredNumbersConditionTester ct = new NoClusteredNumbersConditionTester();
 
         if (Integer.parseInt(temp.toString())<=goraZakresu) {
             for (int a = start; a <= finish; a++) {
