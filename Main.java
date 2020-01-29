@@ -29,6 +29,10 @@ public class Main {
        int wynik = test.main();
         System.out.println(wynik);
 
+        ConditionTester ct = new ConditionTester();
+
+        
+
 
 //        Playpen d = new Playpen();
 //

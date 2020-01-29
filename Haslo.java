@@ -1,5 +1,7 @@
 package com.AdventOfCode4;
 
+import java.util.Objects;
+
 public class Haslo {
 
     int cyfra1;
@@ -62,5 +64,23 @@ public class Haslo {
         return Integer.toString(cyfra1) + cyfra2 +
                 cyfra3 + cyfra4 +
                 cyfra5 + cyfra6;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Haslo haslo = (Haslo) o;
+        return cyfra1 == haslo.cyfra1 &&
+                cyfra2 == haslo.cyfra2 &&
+                cyfra3 == haslo.cyfra3 &&
+                cyfra4 == haslo.cyfra4 &&
+                cyfra5 == haslo.cyfra5 &&
+                cyfra6 == haslo.cyfra6;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cyfra1, cyfra2, cyfra3, cyfra4, cyfra5, cyfra6);
     }
 }
