@@ -72,11 +72,9 @@ public class Main {
 
                 wynik *= intArray[i];
 
-
                 if ( wynik > temp) {
                     temp = wynik;
                 }
-
             }
         }
         System.out.print("Wynik koncowy: ");
