@@ -45,5 +45,17 @@ public class Main {
        int wynik = test.main();
         System.out.println(wynik);
 
+        ConditionTester zbita = new ConditionTester();
+        Haslo zbite = new Haslo();
+        zbite.setAll(1,5,5,6,7,8);
+
+       NoClusteredNumbersConditionTester dupa = new NoClusteredNumbersConditionTester();
+        Haslo dupne = new Haslo();
+        dupne.setAll(1,5,5,6,7,8);
+
+        System.out.println("Bez wykluczenia grup: " +zbita.test(zbite,gora,dol));
+        System.out.println("Z wykluczeniem grup: " +dupa.test(dupne,gora,dol));
+
+
     }
 }

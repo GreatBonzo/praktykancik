@@ -11,28 +11,49 @@ public class Haslo {
     int cyfra5;
     int cyfra6;
 
+    public void setAll (int c1, int c2, int c3, int c4, int c5, int c6){
+        setCyfra1(c1);
+        setCyfra2(c2);
+        setCyfra3(c3);
+        setCyfra4(c4);
+        setCyfra5(c5);
+        setCyfra6(c6);
+    }
+
     public void setCyfra1(int cyfra1) {
+        if(cyfra1<10)
         this.cyfra1 = cyfra1;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public void setCyfra2(int cyfra2) {
-        this.cyfra2 = cyfra2;
+        if(cyfra2<10)
+            this.cyfra2 = cyfra2;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public void setCyfra3(int cyfra3) {
-        this.cyfra3 = cyfra3;
+        if(cyfra3<10)
+            this.cyfra3 = cyfra3;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public void setCyfra4(int cyfra4) {
-        this.cyfra4 = cyfra4;
+        if(cyfra4<10)
+            this.cyfra4 = cyfra4;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public void setCyfra5(int cyfra5) {
-        this.cyfra5 = cyfra5;
+        if(cyfra5<10)
+            this.cyfra5 = cyfra5;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public void setCyfra6(int cyfra6) {
-        this.cyfra6 = cyfra6;
+        if(cyfra6<10)
+            this.cyfra6 = cyfra6;
+        else System.out.println("Cyfry sa od 1-9 kolego");
     }
 
     public int getCyfra1() {
